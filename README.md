@@ -1,2 +1,2 @@
-# dotfiles
-copy for personal configuration of typecraft https://www.youtube.com/watch?v=d23jFJmcaMI&amp;list=WL&amp;index=33
+# dotfiles[
+https://www.youtube.com/watch?v=06x3ZhwrrwA&t=208s
