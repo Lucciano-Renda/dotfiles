@@ -2,7 +2,8 @@
 # See https://wiki.hypr.land/Configuring/Variables/#input
 input {
   # Use multiple keyboard layouts and switch between them with Left Alt + Right Alt
-  kb_layout = latin
+  # kb_layout = us,dk,eu
+  kb_layout = latam
   kb_options = compose:caps # ,grp:alts_toggle
 
   # Change speed of keyboard repeat
@@ -24,9 +25,6 @@ input {
 
     # Control the speed of your scrolling
     scroll_factor = 0.4
-
-    # Enable the touchpad while typing
-    # disable_while_typing = false
 
     # Left-click-and-drag with three fingers
     # drag_3fg = 1
