@@ -44,6 +44,8 @@ alias gpush="git push"
 alias gpull="git pull --prune"
 alias gc="git commit -m"
 alias ga="git add ."
+alias fixgit-to-ssh='git remote set-url origin git@github.com:$(git remote get-url origin | sed "s/.*github.com[\/:]//;s/\.git$//").git'
+
 #????alias gadog='PAGER="less -F -X" git adog'
 #????alias glog='PAGER="less -F -X" git log'
 
