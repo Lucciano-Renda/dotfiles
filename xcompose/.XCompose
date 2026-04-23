@@ -1,8 +1,0 @@
-include "%H/.local/share/omarchy/default/xcompose"
-
-# Identification
-<Multi_key> <space> <n> : "luchho"
-<Multi_key> <space> <-> : "~"
-<Multi_key> <space> <c> : "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"
-<Multi_key> <space> <g> : "Lucciano"
-<Multi_key> <space> <7> : "|"

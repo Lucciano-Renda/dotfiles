@@ -38,6 +38,7 @@ alias -- -='cd -'
 alias mkd="mkdir -p"
 alias fuck="pacman -Rs"
 alias cl="clear"
+alias cd="z"
 
 # Git Aliases
 alias gpush="git push"
