@@ -1,83 +1,147 @@
-configuration {
-    modi: "window";
-    show-icons: true;
-    icon-theme: "Papirus";
-    font: "JetBrainsMono Nerd Font 13";
-    window-thumbnail: true;
+* {
+  font:   "JetBrainsMono Nerd Font Medium 11";
+
+  /* === PALETA DE FONDOS (Backgrounds) === */
+  bg0     : #25352e; /* Fondo de la barra superior donde escribes (inputbar) */
+  bg1     : #1c2d28; /* Fondo principal de toda la ventana de Rofi */
+  bg2     : #2a3d36; /* Fondo de las cajas de mensaje de texto extra (textbox) */
+  bg3     : #5C8373; /* Color del borde exterior de la ventana principal */
+
+  /* === PALETA DE TEXTOS (Foregrounds) === */
+  fg0     : #bcc6a4; /* Texto general por defecto (aunque no se usa mucho aquí por las reglas de abajo) */
+  fg1     : #A5B396; /* Texto secundario (para temas más complejos, aquí es opcional) */
+  fg2     : #768A74; /* Texto de los elementos inactivos, la barra de scroll y el "placeholder" (texto fantasma de búsqueda) */
+
+  /* === COLORES DE ACENTO === */
+  red     : #bf616a; /* Color base para alertas o errores */
+  green   : #6B8C78; /* Color base para la selección principal */
+  yellow  : #A5B396; /* Color extra de la paleta Omarchy */
+  blue    : #80957B; /* Color extra de la paleta Omarchy */
+  magenta : #b48ead; /* Color extra de la paleta Omarchy */
+  cyan    : #768A74; /* Color extra de la paleta Omarchy */
+
+  /* === ASIGNACIÓN DE FUNCIONES === */
+  accent  : @green;  /* Fondo del elemento cuando pasas por encima / lo seleccionas */
+  urgent  : @red;    /* Fondo o texto para aplicaciones/elementos marcados como urgentes */
+
+  /* Configuraciones globales invisibles */
+  background-color : transparent;
+  text-color       : @fg0;
+  margin  : 0;
+  padding : 0;
+  spacing : 0;
 }
 
-* {
-    bg: rgba(15, 15, 20, 0.75);
-    bg-alt: rgba(255, 255, 255, 0.05);
-    bg-selected: rgba(255, 255, 255, 0.10);
-    fg: rgba(220, 220, 230, 1);
-    fg-dim: rgba(150, 150, 160, 0.8);
-    accent: rgba(127, 119, 221, 1);
-    border-col: rgba(127, 119, 221, 0.4);
-
-    background-color: transparent;
-    text-color: @fg;
+element-icon, element-text, scrollbar {
+  cursor: pointer;
 }
 
 window {
-    background-color: @bg;
-    border: 1px;
-    border-color: @border-col;
-    border-radius: 16px;
-    width: 600px;
-    padding: 16px;
-    blur-background: true;
-}
+  location : northwest;
+  width    : 280px;
+  x-offset : 15px;
+  y-offset : 15px;
 
-mainbox {
-    background-color: transparent;
-    spacing: 12px;
+  background-color: @bg1;   /* Usa el negro puro */
+  border: 2px;
+  border-color: @bg3;       /* Usa el borde verde medio */
+  border-radius: 12px;
 }
 
 inputbar {
-    background-color: @bg-alt;
-    border-radius: 10px;
-    padding: 10px 14px;
-    spacing: 8px;
-    children: [prompt, entry];
+  spacing  : 8px;
+  padding  : 4px 8px;
+  children : [ icon-search, entry ];
+  background-color: transparent;   /* Usa el negro puro para la zona de búsqueda */
+  border-radius: 6px;
 }
 
-prompt {
-    text-color: @accent;
-    font: "JetBrainsMono Nerd Font Bold 13";
+icon-search, entry, element-icon, element-text {
+  vertical-align: 0.5;
+}
+
+icon-search {
+  expand   : false;
+  filename : "search-symbolic";
+  size     : 14px;
 }
 
 entry {
-    text-color: @fg;
-    placeholder: "switch window...";
-    placeholder-color: @fg-dim;
+  text-color: #ffffff;      /* Fuerza el texto de lo que escribes a ser Blanco Puro */
+  background-color: transparent;
+  placeholder-color: @fg2;  /* Usa el verde apagado para el texto "Buscar..." */
+}
+
+textbox {
+  padding          : 4px 8px;
+  background-color : @bg2;  /* Usa el fondo verdoso secundario */
 }
 
 listview {
-    background-color: transparent;
-    spacing: 4px;
-    lines: 8;
-    scrollbar: false;
+  padding      : 4px 0px;
+  lines        : 12;
+  columns      : 1;
+  scrollbar    : true;
+  fixed-height : false;
+  dynamic      : true;
 }
 
+/* ---- CONFIGURACIÓN DE LAS FILAS (Elementos) ---- */
 element {
-    background-color: transparent;
-    border-radius: 8px;
-    padding: 8px 12px;
-    spacing: 12px;
-    orientation: horizontal;
+  padding : 4px 8px;
+  spacing : 8px;
+  background-color: transparent;
 }
 
-element selected {
-    background-color: @bg-selected;
-    text-color: @fg;
+/* Filas normales sin seleccionar (inactivas) */
+element normal.normal,
+element alternate.normal {
+  background-color: #25352e; /* Sin fondo */
+  border-radius: 6px;
+  text-color: @fg2;              /* Texto en verde oscuro apagado */
+}
+
+/* Filas marcadas como urgentes sin seleccionar */
+element normal.urgent,
+element alternate.urgent {
+  background-color: transparent;
+  text-color: @urgent;           /* Texto en rojo */
+}
+
+/* Filas activas (ej. ventanas abiertas si usas Rofi como window switcher) */
+element normal.active,
+element alternate.active {
+  background-color: transparent;
+  text-color: @accent;           /* Texto en verde brillante */
+}
+
+/* Fila actualmente SELECCIONADA (donde está el cursor) */
+element selected.normal,
+element selected.active {
+  background-color: @accent;     /* Fondo cambia al verde de acento */
+  text-color: #ffffff;           /* Texto cambia a negro para destacar sobre el fondo verde */
+  border-radius: 4px;
+}
+
+/* Fila urgente SELECCIONADA */
+element selected.urgent {
+  background-color: @urgent;     /* Fondo cambia a rojo */
+  text-color: #000000;           /* Texto a negro */
+  border-radius: 4px;
 }
 
 element-icon {
-    size: 24px;
+  size: 0.8em;
+  background-color: transparent;
 }
 
 element-text {
-    text-color: inherit;
-    vertical-align: 0.5;
+  text-color: inherit; /* Hereda el color dependiendo de si está seleccionado o inactivo */
+  background-color: transparent;
+}
+
+scrollbar {
+  handle-width : 4px;
+  handle-color : @fg2;           /* Color del tirador del scroll en verde apagado */
+  padding      : 0 4px;
 }
