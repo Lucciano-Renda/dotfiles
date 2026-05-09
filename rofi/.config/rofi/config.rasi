@@ -1,6 +1,11 @@
-* {
-  font:   "JetBrainsMono Nerd Font Medium 11";
+ configuration {
+    modi: "window";
+    show-icons: true;
+    font: "JetBrainsMono Nerd Font 13";
+    window-thumbnail: true;
+}
 
+*{
   /* === PALETA DE FONDOS (Backgrounds) === */
   bg0     : #25352e; /* Fondo de la barra superior donde escribes (inputbar) */
   bg1     : #1c2d28; /* Fondo principal de toda la ventana de Rofi */
@@ -68,7 +73,6 @@ icon-search {
 
 entry {
   text-color: #ffffff;      /* Fuerza el texto de lo que escribes a ser Blanco Puro */
-  background-color: transparent;
   placeholder-color: @fg2;  /* Usa el verde apagado para el texto "Buscar..." */
 }
 
@@ -89,14 +93,14 @@ listview {
 /* ---- CONFIGURACIÓN DE LAS FILAS (Elementos) ---- */
 element {
   padding : 4px 8px;
-  spacing : 8px;
+  spacing : 4px;
   background-color: transparent;
 }
 
 /* Filas normales sin seleccionar (inactivas) */
 element normal.normal,
 element alternate.normal {
-  background-color: #25352e; /* Sin fondo */
+  background-color: transparent; /* Sin fondo */
   border-radius: 6px;
   text-color: @fg2;              /* Texto en verde oscuro apagado */
 }
@@ -108,10 +112,11 @@ element alternate.urgent {
   text-color: @urgent;           /* Texto en rojo */
 }
 
-/* Filas activas (ej. ventanas abiertas si usas Rofi como window switcher) */
+/* Filas activas (ej. ventana abierta si usas Rofi como window switcher) */
 element normal.active,
 element alternate.active {
-  background-color: transparent;
+  background-color: @bg0;
+  border-radius: 4px;
   text-color: @accent;           /* Texto en verde brillante */
 }
 
@@ -123,6 +128,8 @@ element selected.active {
   border-radius: 4px;
 }
 
+
+
 /* Fila urgente SELECCIONADA */
 element selected.urgent {
   background-color: @urgent;     /* Fondo cambia a rojo */
@@ -131,7 +138,7 @@ element selected.urgent {
 }
 
 element-icon {
-  size: 0.8em;
+  size: 24px;
   background-color: transparent;
 }
 
