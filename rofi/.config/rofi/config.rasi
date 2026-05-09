@@ -1,0 +1,83 @@
+configuration {
+    modi: "window";
+    show-icons: true;
+    icon-theme: "Papirus";
+    font: "JetBrainsMono Nerd Font 13";
+    window-thumbnail: true;
+}
+
+* {
+    bg: rgba(15, 15, 20, 0.75);
+    bg-alt: rgba(255, 255, 255, 0.05);
+    bg-selected: rgba(255, 255, 255, 0.10);
+    fg: rgba(220, 220, 230, 1);
+    fg-dim: rgba(150, 150, 160, 0.8);
+    accent: rgba(127, 119, 221, 1);
+    border-col: rgba(127, 119, 221, 0.4);
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    background-color: @bg;
+    border: 1px;
+    border-color: @border-col;
+    border-radius: 16px;
+    width: 600px;
+    padding: 16px;
+    blur-background: true;
+}
+
+mainbox {
+    background-color: transparent;
+    spacing: 12px;
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border-radius: 10px;
+    padding: 10px 14px;
+    spacing: 8px;
+    children: [prompt, entry];
+}
+
+prompt {
+    text-color: @accent;
+    font: "JetBrainsMono Nerd Font Bold 13";
+}
+
+entry {
+    text-color: @fg;
+    placeholder: "switch window...";
+    placeholder-color: @fg-dim;
+}
+
+listview {
+    background-color: transparent;
+    spacing: 4px;
+    lines: 8;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 8px 12px;
+    spacing: 12px;
+    orientation: horizontal;
+}
+
+element selected {
+    background-color: @bg-selected;
+    text-color: @fg;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
+}

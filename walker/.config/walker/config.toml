@@ -17,7 +17,8 @@ symbols = 1 # providers to be queried by default
 max_results = 256 # 256 should be enough for everyone
 default = [
   "desktopapplications",
-  "websearch",
+  "websearch", 
+  "windows"
 ]
 
 [[providers.prefixes]]
@@ -58,3 +59,15 @@ ignore = [
     "libreoffice-writer",
     "libreoffice-xsltfilter"
 ]
+
+
+
+
+  
+# Try this specific naming
+[[module]]
+name = "windows"
+prefix = "w "
+
+[builtin.windows] # Note the singular 'builtin' in some builds
+show_preview = true

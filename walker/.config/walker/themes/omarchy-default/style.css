@@ -115,3 +115,12 @@ child:selected .item-box * {
 
 .preview {
 }
+
+#window {
+  padding: 10px;
+}
+
+#preview {
+  border-radius: 8px;
+  margin-left: 10px;
+}

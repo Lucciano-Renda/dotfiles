@@ -41,7 +41,7 @@ alias cl="clear"
 alias cd="z"
 alias find="fd -H"
 alias fzf="fzf --preview 'bat --style=numbers --color=always {}'"
-alias fuck="pacman -Rs"
+alias fuck="sudo pacman -Rs"
 alias audio="alsamixer"
 alias nvbash="nv dotfiles/bashrc/.bashrc"
 
